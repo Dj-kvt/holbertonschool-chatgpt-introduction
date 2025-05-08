@@ -1,12 +1,23 @@
 #!/usr/bin/python3
 import sys
-
-def factorial(n):
-    result = 1
+def factorielle(n):
+    resultat = 1
     while n > 1:
-        result *= n
-        n -= 1  # Décrémenter n pour éviter une boucle infinie
-    return result  # Retourner le résultat correctement
+        resultat *= n
+        n -= 1  # On décrémente n pour éviter une boucle infinie
+    return resultat
+# Vérifie qu'un argument a été fourni
+if len(sys.argv) != 2:
+    print("Utilisation : ./factorial.py <nombre>")
+    sys.exit(1)
+try:
+    nombre = int(sys.argv[1])
+    if nombre < 0:
+        print("La factorielle n'est pas définie pour les nombres négatifs.")
+        sys.exit(1)
+    f = factorielle(nombre)
+    print(f)
+except ValueError:
+    print("Veuillez entrer un entier valide.")
+    sys.exit(1)
 
-f = factorial(int(sys.argv[1]))  # Appeler la fonction factorial avec l'argument passé en ligne de commande
-print(f)  # Afficher le résultat
